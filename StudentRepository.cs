@@ -44,7 +44,7 @@ namespace UGC.DAL.StudentRepository
                         if (!String.IsNullOrEmpty(a["Id"].Value.ToString()))
                         {
                             StudentNeb excelD = new StudentNeb();
-                            excelD.id = Int64.Parse(a["Id"]);
+                            excelD.id = Int.Parse(a["Id"]);
                             excelD.neb_id = a["Neb Id"].Value.ToString();
                             excelD.student_name = a["Student Name"].Value.ToString();
                             excelD.mobile_no = a["Mobile"].Value.ToString();

@@ -18,51 +18,12 @@ namespace UGC.Service.StudentService
 {
     public class StudentService : IStudentService
     {
-        public IDataAccessLayer _dah;
+       
         public readonly IStudentRepository _studentRepository;
-        public StudentService(IDataAccessLayer dah, IStudentRepository studentRepository)
+        public StudentService(IStudentRepository studentRepository)
         {
-            _dah = dah;
+          
             _studentRepository = studentRepository;
-        }
-
-        public async Task<StudentNeb> Create(StudentNeb model)
-        {
-            var id = await _studentRepository.InsertStudentAsync(model);
-            return model;
-        }
-        public async Task<List<StudentNeb>> GetStudent(int? pageNumber, int? pageSize)
-        {
-            var data = await _studentRepository.GetStudent(pageNumber, pageSize);
-            return data;
-        }
-        public async Task<List<StudentNeb>> GetStudentById(int Id)
-        {
-            var data = await _studentRepository.GetStudentById(Id);
-            return data;
-        }
-        public async Task<List<StudentNeb>> GetStudentByNEBId(string nebID)
-        {
-            var data = await _studentRepository.GetStudentByNEBId(nebID);
-            return data;
-           
-        }
-        
-
-        public async Task<bool> UpdateStudent(StudentNeb model)
-        {
-            return await _studentRepository.UpdateStudentAsync(model);
-        }
-
-        public async Task<bool> DeleteStudent(StudentNeb model)
-        {
-            return await _studentRepository.DeleteStudent(model);
-        }
-
-        public async Task<List<StudentNeb>> GetStudentListInExcel()
-        {
-            var data = await _studentRepository.GetStudentListInExcel();
-            return data;
         }
 
         public async Task<bool> UploadExcel(string pathToExcelFile)
